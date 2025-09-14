@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.24.0",
-    "babel-plugin-styled-components": "^2.1.5",
+    "babel-plugin-styled-components": "^2.1.0",
     "react-scripts": "5.0.1"
   },
   "browserslist": {
