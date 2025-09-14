@@ -12,10 +12,15 @@ import os
 app = Flask(__name__)                         # Create Flask app
 
 # Pick env from system environment variable, default to dev_postgres
-env = os.environ.get("FLASK_ENV", "dev_postgres")
+# env = os.environ.get("FLASK_ENV", "dev_postgres")
 
 # Load config using your env + config.yaml
-app.config.update(get_config(env, open("server/config.yaml")))
+# app.config.update(get_config(env, open("server/config.yaml")))
+
+app.config['DB_USAGE'] = os.environ.get("DB_USAGE")
+app.config['DB_GAMES'] = os.environ.get("DB_GAMES")
+app.config['DB_AUTH']  = os.environ.get("DB_AUTH")
+app.config['JWT_SECRET_KEY'] = os.environ.get("JWT_SECRET_KEY")
 
 CORS(app)                                     # Cross-origin resource sharing
 
