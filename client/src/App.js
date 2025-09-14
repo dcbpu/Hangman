@@ -3,7 +3,9 @@ import { GlobalStyle } from './fonts';
 import { SignInScreen, PlayScreen, WinScreen, LoseScreen } from './screens';
 import axios from 'axios';
 
-const APIURL = 'http://localhost:5000/';
+//const APIURL = 'http://localhost:5000/';
+const APIURL = process.env.REACT_APP_API_URL;
+
 
 class App extends Component {
     constructor(props) {
