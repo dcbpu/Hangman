@@ -1,7 +1,7 @@
 pip>=25.2
-setuptools<70
+setuptools>=70
 wheel
-cython
+cython>=0.29.36
 Flask==2.3.2
 Flask-RESTx==1.1.0
 Flask-JWT-Extended==4.4.4
