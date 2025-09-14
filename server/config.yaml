@@ -1,0 +1,8 @@
+
+dev_postgres:
+  DB_USAGE: postgresql://root:rootpassword@localhost/langman
+  DB_GAMES: postgresql://root:rootpassword@localhost/langman
+  DB_AUTH: postgresql://root:rootpassword@localhost/langman
+  JWT_SECRET_KEY: "super-secret-key"
+
+
