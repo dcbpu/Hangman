@@ -39,6 +39,23 @@ jwt = JWT.JWTManager(app)  # do this after config is set
 
 print('URL MAP', app.url_map)   # useful for debugging
 
+# -----------------------------
+# Database setup
+# -----------------------------
+def create_all_tables():
+    """Create tables on app startup if they don't exist."""
+    if app.config['DB_AUTH']:
+        engine_auth = create_engine(app.config['DB_AUTH'])
+        AuthBase.metadata.create_all(engine_auth)
+    if app.config['DB_GAMES']:
+        engine_games = create_engine(app.config['DB_GAMES'])
+        GamesBase.metadata.create_all(engine_games)
+    if app.config['DB_USAGE']:
+        engine_usage = create_engine(app.config['DB_USAGE'])
+        UsageBase.metadata.create_all(engine_usage)
+
+create_all_tables()
+
 @app.before_request
 def init_db():
     '''Initialize db by creating the global db_session
