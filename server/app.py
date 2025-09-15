@@ -11,9 +11,10 @@ import os
 
 # Import your API namespaces and models
 from .games_api import games_api
-from .auth_api import auth_api, Base as AuthBase
-from .games_api import Base as GamesBase
-from .usage_api import Base as UsageBase  # if you have a usage base
+from .auth_api import auth_api
+from .auth_orm import base as AuthBase
+from .langman_orm import Base as GamesBase
+from .langman_orm import Base as UsageBase  # if you have a usage base
 
 app = Flask(__name__)                         # Create Flask app
 
