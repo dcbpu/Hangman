@@ -1,4 +1,3 @@
-# app.py
 import os
 from flask import Flask, g
 from sqlalchemy import create_engine
@@ -33,14 +32,21 @@ class OneGame(Resource):
 
 # Create the app and configure it
 app = Flask(__name__)                       # Create Flask app
-env = os.environ.get('FLASK_ENV', 'dev_postgres')
-app.config.update(get_config(env, open('server/config.yaml')))
+#env = os.environ.get('FLASK_ENV', 'production')
+#app.config.update(get_config(env, open('server/config.yaml')))
 #app.config.update(get_config(app.config['ENV'], 
 #app.open_resource('config.yaml')))
+# Make sure you define these in Render Dashboard → Environment
+app.config["DB_USAGE"] = os.environ["DB_USAGE"]
+app.config["DB_GAMES"] = os.environ["DB_GAMES"]
+app.config["JWT_SECRET_KEY"] = os.environ["JWT_SECRET_KEY"]
+
 CORS(app)                                   # Cross-origin resource sharing
 api = Api(app)                              # Create RESTplus api on app
 api.add_namespace(games_api, path='/api/games') # Insert games namespace
 # -- client expects /api/games; changed from /games to /api/games here.
+
+
 @games_api.route('')
 class Games(Resource):
     valid_langs = ('en', 'es', 'fr')
